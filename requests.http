@@ -1,0 +1,47 @@
+### Cliente REST (VS Code "REST Client" o IntelliJ). El servidor debe estar en el puerto 8080.
+
+### 1. Crear jugador
+POST http://localhost:8080/api/jugadores
+Content-Type: application/json
+
+{ "nick": "Elena", "equipo": "Azules" }
+
+### 2. Listar jugadores
+GET http://localhost:8080/api/jugadores
+
+### 3. Crear torneo
+POST http://localhost:8080/api/torneos
+Content-Type: application/json
+
+{ "nombre": "Copa Relampago", "modalidad": "VELOCIDAD" }
+
+### 4. Inscribir jugador 1 en el torneo 2
+POST http://localhost:8080/api/torneos/2/inscripciones/1
+
+### 5. Registrar partida
+POST http://localhost:8080/api/torneos/1/partidas
+Content-Type: application/json
+
+{ "jugadorId": 2, "kills": 4, "muertes": 1, "segundos": 250 }
+
+### 6. Importar resultados del servidor antiguo (formato nick;kills;muertes;segundos)
+POST http://localhost:8080/api/torneos/1/importar
+Content-Type: text/plain
+
+Ana;3;1;200
+Dani;6;2;310
+
+### 7. Ranking de jugadores
+GET http://localhost:8080/api/torneos/1/ranking?top=3
+
+### 8. Ranking de equipos
+GET http://localhost:8080/api/torneos/1/ranking-equipos
+
+### 9. Error esperado: formato invalido (400)
+POST http://localhost:8080/api/torneos/1/importar
+Content-Type: text/plain
+
+Ana;muchas;1;200
+
+### 10. Error esperado: torneo inexistente (404)
+GET http://localhost:8080/api/torneos/999

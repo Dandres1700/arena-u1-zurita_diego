@@ -1,0 +1,173 @@
+{
+  "info": {
+    "name": "Arena INTESUD - U1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear jugador",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/jugadores"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nick\":\"Elena\",\"equipo\":\"Azules\"}"
+        }
+      }
+    },
+    {
+      "name": "Listar jugadores",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/jugadores"
+        }
+      }
+    },
+    {
+      "name": "Crear torneo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nombre\":\"Copa Relampago\",\"modalidad\":\"VELOCIDAD\"}"
+        }
+      }
+    },
+    {
+      "name": "Listar torneos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos"
+        }
+      }
+    },
+    {
+      "name": "Inscribir jugador 1 en torneo 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/2/inscripciones/1"
+        }
+      }
+    },
+    {
+      "name": "Registrar partida",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/partidas"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"jugadorId\":2,\"kills\":4,\"muertes\":1,\"segundos\":250}"
+        }
+      }
+    },
+    {
+      "name": "Importar resultados (Adapter)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/importar"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "Ana;3;1;200\nDani;6;2;310"
+        }
+      }
+    },
+    {
+      "name": "Ranking jugadores",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/ranking?top=3"
+        }
+      }
+    },
+    {
+      "name": "Ranking equipos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/ranking-equipos"
+        }
+      }
+    },
+    {
+      "name": "Finalizar torneo",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/finalizar"
+        }
+      }
+    },
+    {
+      "name": "ERROR 400 formato invalido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/1/importar"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "Ana;muchas;1;200"
+        }
+      }
+    },
+    {
+      "name": "ERROR 404 torneo inexistente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/torneos/999"
+        }
+      }
+    }
+  ]
+}
